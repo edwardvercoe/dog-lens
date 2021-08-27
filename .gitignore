@@ -4,7 +4,7 @@
 ### Custom ###
 build
 stats.json
---yarn.lock
+
 
 ### macOS ###
 *.DS_Store
