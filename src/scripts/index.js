@@ -26,10 +26,10 @@ var takeSnapshotUI = createClickFeedbackUI();
 
 var video;
 var takePhotoButton;
-var toggleFullScreenButton;
 var switchCameraButton;
 var amountOfCameras = 0;
 var currentFacingMode = 'environment';
+var angle;
 
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
