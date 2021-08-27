@@ -105,7 +105,6 @@ function initCameraUI() {
   video = document.getElementById('video');
 
   takePhotoButton = document.getElementById('takePhotoButton');
-  toggleFullScreenButton = document.getElementById('toggleFullScreenButton');
   switchCameraButton = document.getElementById('switchCameraButton');
 
   // https://developer.mozilla.org/nl/docs/Web/HTML/Element/button
@@ -259,7 +258,7 @@ function createClickFeedbackUI() {
   var overlay = document.getElementById('video_overlay'); //.style.display;
 
   // sound feedback
-  var sndClick = new Howl({ src: ['src/audio/snap.wav'] });
+  //   var sndClick = new Howl({ src: ['src/audio/snap.wav'] });
 
   var overlayVisibility = false;
   var timeOut = 80;
@@ -271,7 +270,7 @@ function createClickFeedbackUI() {
 
   return function () {
     if (overlayVisibility == false) {
-      sndClick.play();
+      //   sndClick.play();
       overlayVisibility = true;
       overlay.style.display = 'block';
       setTimeout(setFalseAgain, timeOut);
