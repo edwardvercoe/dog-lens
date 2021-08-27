@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dog Lens</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- You can use open graph tags to customize link previews.
+        Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url" content="https://github.com/vadimmarkov/webpack-es6-sass-boilerplate" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Webpack ES6+ Sass Boilerplate" />
+    <meta
+      property="og:description"
+      content="A minimalistic webpack 4 based boilerplate for building web apps"
+    />
+    <meta property="og:image" content="https://webpack.js.org/icon_192x192.png" />
+
+    <meta name="theme-color" content="#fafafa" />
+  </head>
+
+  <body>
+    <main>
+      <div id="webcam-container" class="webcam-container d-none">
+        <video id="webcam" autoplay playsinline width="640" height="480"></video>
+        <canvas id="canvas" class="d-none"></canvas>
+        <div class="flash"></div>
+        <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio>
+      </div>
+      <div id="cameraControls" class="cameraControls">
+        <a href="#" id="exit-app" title="Exit App" class="d-none"
+          ><i class="material-icons">exit_to_app</i></a
+        >
+        <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+        <a
+          href="#"
+          id="download-photo"
+          download="selfie.png"
+          target="_blank"
+          title="Save Photo"
+          class="d-none"
+          ><i class="material-icons">file_download</i></a
+        >
+        <a href="#" id="resume-camera" title="Resume Camera" class="d-none"
+          ><i class="material-icons">camera_front</i></a
+        >
+      </div>
+    </main>
+
+    <div class="modal" id="modal">
+      <div class="container">
+        <div class="modal__title">
+          <h1>
+            IT’S HAPPY
+            <span>SNAP</span>
+            TIME
+          </h1>
+        </div>
+        <div class="modal__byline">
+          <p>Take a pic of your 4 legged legend with our Dog-Tography Sound Assistant.</p>
+        </div>
+        <div class="modal__cta">
+          <button class="btn__action">GET SNAP'N</button>
+        </div>
+      </div>
+      <!-- <img src="./images/modal_bg.jpg" alt="" /> -->
+    </div>
+  </body>
+</html>
