@@ -9,7 +9,6 @@
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" href="favicon.ico" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <!-- You can use open graph tags to customize link previews.
         Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
@@ -27,30 +26,29 @@
 
   <body>
     <main>
-      <div id="webcam-container" class="webcam-container d-none">
-        <video id="webcam" autoplay playsinline width="640" height="480"></video>
-        <canvas id="canvas" class="d-none"></canvas>
-        <div class="flash"></div>
-        <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio>
-      </div>
-      <div id="cameraControls" class="cameraControls">
-        <a href="#" id="exit-app" title="Exit App" class="d-none"
-          ><i class="material-icons">exit_to_app</i></a
-        >
-        <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-        <a
-          href="#"
-          id="download-photo"
-          download="selfie.png"
-          target="_blank"
-          title="Save Photo"
-          class="d-none"
-          ><i class="material-icons">file_download</i></a
-        >
-        <a href="#" id="resume-camera" title="Resume Camera" class="d-none"
-          ><i class="material-icons">camera_front</i></a
-        >
-      </div>
+      <div id="container">
+        <div id="vid_container">
+          <video id="video" autoplay playsinline></video>
+          <div id="video_overlay"></div>
+        </div>
+        <div id="gui_controls">
+          <button
+            id="switchCameraButton"
+            name="switch Camera"
+            type="button"
+            aria-pressed="false"
+          ></button>
+          <button id="takePhotoButton" name="take Photo" type="button"></button>
+
+          <a id="downloadImage" href="#">
+          <button
+          id="savePhotoButton"
+          name="savePhoto"
+          type="button"
+          aria-pressed="false"
+        >save photo</button></a>
+        </div>
+  
     </main>
 
     <div class="modal" id="modal">
