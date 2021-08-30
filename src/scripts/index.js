@@ -1,15 +1,21 @@
 import '../stylesheets/style.scss';
 
 import { Howl } from 'howler';
+import watermark from 'watermarkjs';
 
 // DOM READY
 // MODAL
+let sndClick;
 
 document.addEventListener('DOMContentLoaded', () => {
   const ctaButton = document.querySelector('.btn__action');
+
   ctaButton.addEventListener('click', (e) => {
     e.preventDefault();
+    sndClick = new Howl({ src: ['./audio/dog.mp3'], loop: true, html5: true });
+
     document.getElementById('modal').remove();
+    sndClick.play();
   });
 });
 
@@ -30,6 +36,10 @@ var switchCameraButton;
 var amountOfCameras = 0;
 var currentFacingMode = 'environment';
 var angle;
+
+const previewImgContainer = document.querySelector('.photo-preview-container');
+const previewImgElement = document.getElementById('photo-preview');
+const bgBlurred = document.querySelector('.photo-preview--blurred');
 
 // this function counts the amount of video inputs
 // it replaces DetectRTC that was previously implemented.
@@ -105,7 +115,7 @@ function initCameraUI() {
   video = document.getElementById('video');
 
   takePhotoButton = document.getElementById('takePhotoButton');
-  switchCameraButton = document.getElementById('switchCameraButton');
+  // switchCameraButton = document.getElementById('switchCameraButton');
 
   // https://developer.mozilla.org/nl/docs/Web/HTML/Element/button
   // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
@@ -116,16 +126,16 @@ function initCameraUI() {
   });
 
   // -- switch camera part
-  if (amountOfCameras > 1) {
-    switchCameraButton.style.display = 'block';
+  // if (amountOfCameras > 1) {
+  //   switchCameraButton.style.display = 'block';
 
-    switchCameraButton.addEventListener('click', function () {
-      if (currentFacingMode === 'environment') currentFacingMode = 'user';
-      else currentFacingMode = 'environment';
+  //   switchCameraButton.addEventListener('click', function () {
+  //     if (currentFacingMode === 'environment') currentFacingMode = 'user';
+  //     else currentFacingMode = 'environment';
 
-      initCameraStream();
-    });
-  }
+  //     initCameraStream();
+  //   });
+  // }
 
   // Listen for orientation changes to make sure buttons stay at the side of the
   // physical (and virtual) buttons (opposite of camera) most of the layout change is done by CSS media queries
@@ -190,13 +200,13 @@ function initCameraStream() {
     window.stream = stream; // make stream available to browser console
     video.srcObject = stream;
 
-    if (constraints.video.facingMode) {
-      if (constraints.video.facingMode === 'environment') {
-        switchCameraButton.setAttribute('aria-pressed', true);
-      } else {
-        switchCameraButton.setAttribute('aria-pressed', false);
-      }
-    }
+    // if (constraints.video.facingMode) {
+    //   if (constraints.video.facingMode === 'environment') {
+    //     switchCameraButton.setAttribute('aria-pressed', true);
+    //   } else {
+    //     switchCameraButton.setAttribute('aria-pressed', false);
+    //   }
+    // }
 
     const track = window.stream.getVideoTracks()[0];
     const settings = track.getSettings();
@@ -245,10 +255,21 @@ function takeSnapshot() {
 
     let blobURL = URL.createObjectURL(blob);
     const downloadBtn = document.querySelector('#downloadImage');
-    document.querySelector('#savePhotoButton').classList.add('active');
-    downloadBtn.href = blobURL;
-    downloadBtn.download = 'dogSnap.jpeg';
-    console.log(downloadBtn);
+
+    // preview image
+
+    watermark([blobURL, './images/watermark@2x.png'])
+      .image(watermark.image.lowerRight())
+      .then(function (img) {
+        previewImgElement.innerHTML = '';
+        previewImgElement.appendChild(img);
+
+        downloadBtn.href = img.src;
+        downloadBtn.download = 'dogSnap.jpeg';
+        bgBlurred.style.backgroundImage = `url(${img.src})`;
+        sndClick.stop();
+      });
+    previewImgContainer.classList.add('active');
   });
 }
 
@@ -258,7 +279,6 @@ function createClickFeedbackUI() {
   var overlay = document.getElementById('video_overlay'); //.style.display;
 
   // sound feedback
-  //   var sndClick = new Howl({ src: ['src/audio/snap.wav'] });
 
   var overlayVisibility = false;
   var timeOut = 80;
@@ -270,10 +290,22 @@ function createClickFeedbackUI() {
 
   return function () {
     if (overlayVisibility == false) {
-      //   sndClick.play();
       overlayVisibility = true;
       overlay.style.display = 'block';
       setTimeout(setFalseAgain, timeOut);
     }
   };
 }
+
+// Save & Delete button actions
+
+// const saveButton = document.getElementById('button-save');
+const deleteButton = document.getElementById('button-delete');
+
+deleteButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  previewImgContainer.classList.remove('active');
+  previewImgElement.innerHTML = '';
+  bgBlurred.style.backgroundImage = '';
+  sndClick.play();
+});

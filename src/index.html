@@ -12,12 +12,11 @@
 
     <!-- You can use open graph tags to customize link previews.
         Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url" content="https://github.com/vadimmarkov/webpack-es6-sass-boilerplate" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Webpack ES6+ Sass Boilerplate" />
+    <meta property="og:title" content="Dog lens" />
     <meta
       property="og:description"
-      content="A minimalistic webpack 4 based boilerplate for building web apps"
+      content=""
     />
     <meta property="og:image" content="https://webpack.js.org/icon_192x192.png" />
 
@@ -31,17 +30,28 @@
           <video id="video" autoplay playsinline></video>
           <div id="video_overlay"></div>
         </div>
+        <div class="notification-audio">
+          <div class="icon"></div>
+          <p>Turn on your audio
+          </p>
+        </div>
+        <div class="photo-preview-container">
+          <div class="photo-preview--blurred"></div>
+
+          <div id="photo-preview">
+          </div>
+          <div class="photo-preview-gui">
+            <button id="button-save"><a id="downloadImage" target="_blank" href="#">Save</a></button>
+            <button id="button-delete">Delete</button>
+          </div>
+        </div>
+  
         <div id="gui_controls">
 
           <button id="takePhotoButton" name="take Photo" type="button"></button>
 
-          <a id="downloadImage" href="#">
-          <button
-          id="savePhotoButton"
-          name="savePhoto"
-          type="button"
-          aria-pressed="false"
-        >save photo</button></a>
+
+        <a href="#" id="enterNow"><button >Enter now</button></a>
         </div>
   
     </main>
@@ -60,9 +70,12 @@
         </div>
         <div class="modal__cta">
           <button class="btn__action">GET SNAP'N</button>
+          <button class="btn__external">ENTER NOW</button>
         </div>
       </div>
-      <div class="modal__footer"></div>
+      <div class="modal__footer">
+        <img src="./images/weekly-times.png" alt="weekly times">
+      </div>
     </div>
   </body>
 </html>

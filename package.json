@@ -88,7 +88,7 @@
   },
   "dependencies": {
     "howler": "^2.2.3",
-    "webcam-easy": "^1.0.5",
+    "watermarkjs": "^2.1.1",
     "webrtc-adapter": "^8.1.0"
   }
 }

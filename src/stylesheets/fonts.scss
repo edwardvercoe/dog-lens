@@ -7,3 +7,12 @@
   font-weight: normal;
   src: url('../fonts/Roboto-Light.woff') format('woff');
 }
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Circular Std Black';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Circular-Std-Black.woff2') format('woff2'),
+    url('../fonts/Circular-Std-Black.woff') format('woff');
+}

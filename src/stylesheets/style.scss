@@ -1,14 +1,18 @@
 @import '~normalize.css/normalize.css';
 @import './base';
+@import './vars';
 @import './fonts';
 @import './webcam';
+
+body {
+  font-family: 'Circular Std Black', Helvetica, sans-serif, Arial;
+}
 
 // custom styles
 
 main {
   max-width: 1280px;
   margin: 0 auto;
-  border: 1px dotted greenyellow;
   height: 100vh;
   position: relative;
 }
@@ -23,25 +27,41 @@ main {
   z-index: 999;
 
   .container {
-    padding-left: 35px;
-    background-image: url('../images/modal_bg.jpg');
+    padding: 0 35px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)),
+      url('../images/modal_bg.jpg');
     background-position: 55% 55%;
     background-repeat: no-repeat;
     background-size: cover;
-    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
+    position: relative;
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background-color: ;
+    // }
   }
 
   &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 120px;
     width: 100%;
     background: rgb(71, 113, 60);
-    background: linear-gradient(0deg, rgba(71, 113, 60, 1) 15%, rgba(0, 0, 0, 1) 70%);
+    background: linear-gradient(0deg, rgba(71, 113, 60, 1) 15%, #263a25 70%);
   }
 
   p {
     font-size: 1.25rem;
     max-width: 260px;
     margin-bottom: 44px;
+    font-weight: 400;
   }
 
   &__title {
@@ -51,16 +71,18 @@ main {
       font-size: 68px;
       font-weight: 400;
       margin: 0;
+      line-height: 0.97;
       span {
         color: #456e3b;
       }
     }
   }
   &__cta {
+    padding-bottom: 40px;
     button {
       background: none;
       border: 2px solid #fff;
-      border-radius: 10px;
+      border-radius: $button-radius;
       height: 50px;
       min-width: 217px;
       color: #fefefe;
@@ -69,6 +91,13 @@ main {
       font-size: 18px;
       width: 215px;
       height: 50px;
+      margin: 10px 0;
+
+      &:first-of-type {
+        border-color: $theme-color;
+        background-color: $theme-color;
+        margin-top: 0;
+      }
     }
   }
 }

@@ -11,13 +11,6 @@
   z-index: 0;
 }
 
-#gui_controls {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  bottom: 0;
-}
-
 #video_overlay {
   position: fixed;
   display: none;
@@ -31,14 +24,54 @@
   background-color: #111;
 }
 
+.notification-audio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding-top: 40px;
+  // background-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 0;
+    padding: 0;
+    max-width: 102px;
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .icon {
+    width: 34px;
+    height: 27px;
+    margin-bottom: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='33.969' height='27.044' viewBox='0 0 33.969 27.044'%3E%3Cg id='noun_Audio_3408350' transform='translate(-2.5 -12.222)'%3E%3Cg id='Group_1' data-name='Group 1' transform='translate(2.5 12.222)'%3E%3Cpath id='Path_1' data-name='Path 1' d='M67.6,31.165a1.671,1.671,0,1,0-2.327,2.4,5.536,5.536,0,0,1,0,8.018,1.653,1.653,0,0,0-.036,2.362,1.622,1.622,0,0,0,1.217.5,1.708,1.708,0,0,0,1.181-.465,8.842,8.842,0,0,0,2.72-6.443A9.108,9.108,0,0,0,67.6,31.165Z' transform='translate(-42.476 -24.085)' fill='%23fff'/%3E%3Cpath id='Path_2' data-name='Path 2' d='M78.4,17.833a1.674,1.674,0,1,0-2.219,2.506,11.726,11.726,0,0,1,0,17.467,1.689,1.689,0,0,0-.143,2.362,1.715,1.715,0,0,0,1.253.573,1.665,1.665,0,0,0,1.11-.43,15.108,15.108,0,0,0,5.011-11.239A14.854,14.854,0,0,0,78.4,17.833Z' transform='translate(-49.439 -15.55)' fill='%23fff'/%3E%3Cpath id='Path_3' data-name='Path 3' d='M19.681,12.429,9.551,19.981H3.5a1,1,0,0,0-1,1v9.485a1,1,0,0,0,1,1H9.551l10.13,7.588a1,1,0,0,0,1.611-.823V13.216A1,1,0,0,0,19.681,12.429Z' transform='translate(-2.5 -12.222)' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  }
+}
+
 #gui_controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: fixed;
+  // background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  bottom: 0;
+
+  a {
+    text-decoration: none;
+  }
+
   /*  Button style from: 
       https://googlesamples.github.io/web-fundamentals/fundamentals/media/mobile-web-video-playback.html */
 
   button {
     outline: none;
     border: none;
-    position: absolute;
     display: block;
     opacity: 1;
     padding: 0;
@@ -47,30 +80,32 @@
     background-repeat: no-repeat;
     pointer-events: auto;
     z-index: 2;
+    color: #fff;
+  }
+
+  #enterNow {
+    border: 2px solid #fff;
+    border-radius: $button-radius;
+    width: 145px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      font-size: 1.125rem;
+      font-weight: bold;
+    }
   }
 }
 
 #takePhotoButton {
-  left: calc(50% - 40px);
-  top: calc(50% - 40px);
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg id='Group_31' data-name='Group 31' transform='translate(-152 -673)'%3E%3Ccircle id='Ellipse_1' data-name='Ellipse 1' cx='39' cy='39' r='39' transform='translate(158 679)' fill='%23fff'/%3E%3Cg id='Ellipse_2' data-name='Ellipse 2' transform='translate(152 673)' fill='none' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='45' cy='45' r='45' stroke='none'/%3E%3Ccircle cx='45' cy='45' r='44.5' fill='none'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 #takePhotoButton:active {
   transform: scale(0.9);
-}
-
-#savePhotoButton {
-  display: none;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
-  &.active {
-    display: block;
-  }
 }
 
 #savePhotoButton[aria-pressed='true'] {
@@ -94,8 +129,8 @@
   }
 
   #savePhotoButton {
-    left: calc(80% - 32px);
-    top: calc(50% - 32px);
+    top: 0;
+    left: 0;
     color: white;
   }
 }
@@ -125,5 +160,94 @@
   #savePhotoButton {
     left: calc(50% - 32px);
     top: calc(82% - 32px);
+  }
+}
+
+.photo-preview-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  background-color: #0e0e0e;
+
+  // transition: all 0.1s ease;
+  z-index: 20;
+  padding: 0 30px;
+  overflow: hidden;
+
+  &.active {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .photo-preview--blurred {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    filter: blur(10px);
+    background-position: center;
+  }
+
+  #photo-preview {
+    z-index: 30;
+    height: 100%;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 30;
+    }
+  }
+
+  .photo-preview-gui {
+    z-index: 40;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 2px solid #fff;
+      border-radius: $button-radius;
+      background-color: transparent;
+      color: #fff;
+      height: 55px;
+      width: 50%;
+
+      a {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &:first-of-type {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &:last-of-type {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
   }
 }
