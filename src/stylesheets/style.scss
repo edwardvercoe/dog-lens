@@ -15,9 +15,12 @@ main {
   margin: 0 auto;
   height: 100vh;
   position: relative;
+  font-family: Helvetica, sans-serif, Arial;
 }
 
 .modal {
+  display: block;
+  opacity: 1;
   position: absolute;
   top: 0;
   left: 0;
@@ -25,6 +28,16 @@ main {
   width: 100vw;
   background-color: #000;
   z-index: 999;
+
+  &.disable {
+    opacity: 0;
+    display: none;
+    user-select: none;
+    height: 0;
+    width: 0;
+    left: 101%;
+    overflow: hidden;
+  }
 
   .container {
     padding: 0 35px;
@@ -79,6 +92,8 @@ main {
   }
   &__cta {
     padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
     button {
       background: none;
       border: 2px solid #fff;

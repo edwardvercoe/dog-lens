@@ -18,7 +18,7 @@
       property="og:description"
       content=""
     />
-    <meta property="og:image" content="https://webpack.js.org/icon_192x192.png" />
+    <meta property="og:image" content="" />
 
     <meta name="theme-color" content="#fafafa" />
   </head>
@@ -29,20 +29,29 @@
         <div id="vid_container">
           <video id="video" autoplay playsinline></video>
           <div id="video_overlay"></div>
+          <a href="#" id="backHome"><button >BACK HOME</button></a>
+
         </div>
         <div class="notification-audio">
-          <div class="icon"></div>
-          <p>Turn on your audio
+          <div class="icon"><img src="./images/audio.gif" alt="audio icon"></div>
+          <p>Audio On
           </p>
         </div>
         <div class="photo-preview-container">
           <div class="photo-preview--blurred"></div>
-
+          <div id="close-icon"></div>
           <div id="photo-preview">
+            
           </div>
           <div class="photo-preview-gui">
-            <button id="button-save"><a id="downloadImage" target="_blank" href="#">Save</a></button>
-            <button id="button-delete">Delete</button>
+            <div class="preview-options">
+              <button id="button-save"><a id="downloadImage"  href="#">Save</a></button>
+              <button id="button-delete">Re-Take</button>
+            </div>
+            <div class="safari-options">
+              <div class="safari-svg-container"> <div class="safari-svg"></div> </div>
+              <div class="safari-text"><p>Long press on image for save options.</p></div>
+            </div>
           </div>
         </div>
   
@@ -51,7 +60,6 @@
           <button id="takePhotoButton" name="take Photo" type="button"></button>
 
 
-        <a href="#" id="enterNow"><button >Enter now</button></a>
         </div>
   
     </main>

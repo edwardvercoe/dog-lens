@@ -2,6 +2,7 @@ import '../stylesheets/style.scss';
 
 import { Howl } from 'howler';
 import watermark from 'watermarkjs';
+import platform from 'platform';
 
 // DOM READY
 // MODAL
@@ -9,14 +10,28 @@ let sndClick;
 
 document.addEventListener('DOMContentLoaded', () => {
   const ctaButton = document.querySelector('.btn__action');
+  const backHomeButton = document.querySelector('#backHome');
 
   ctaButton.addEventListener('click', (e) => {
     e.preventDefault();
     sndClick = new Howl({ src: ['./audio/dog.mp3'], loop: true, html5: true });
-
-    document.getElementById('modal').remove();
+    document.querySelector('.notification-audio').classList.add('animation');
+    document.getElementById('modal').classList.add('disable');
     sndClick.play();
   });
+
+  backHomeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('modal').classList.remove('disable');
+    sndClick.stop();
+  });
+
+  console.log(platform.name);
+
+  if (platform.name == 'Safari') {
+    document.querySelector('.preview-options').classList.add('disable');
+    document.querySelector('.safari-options').classList.add('active');
+  }
 });
 
 //
@@ -301,8 +316,17 @@ function createClickFeedbackUI() {
 
 // const saveButton = document.getElementById('button-save');
 const deleteButton = document.getElementById('button-delete');
+const closeButton = document.getElementById('close-icon');
 
 deleteButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  previewImgContainer.classList.remove('active');
+  previewImgElement.innerHTML = '';
+  bgBlurred.style.backgroundImage = '';
+  sndClick.play();
+});
+
+closeButton.addEventListener('click', (e) => {
   e.preventDefault();
   previewImgContainer.classList.remove('active');
   previewImgElement.innerHTML = '';
