@@ -19,15 +19,18 @@ main {
 }
 
 .modal {
-  display: block;
+  display: flex;
+  flex-direction: column;
   opacity: 1;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-color: #000;
   z-index: 999;
+  // overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   &.disable {
     opacity: 0;
@@ -46,35 +49,29 @@ main {
     background-position: 50% 55%;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: calc(100vh - 120px);
     position: relative;
-
-    // &::after {
-    //   content: '';
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 100%;
-    //   background-color: ;
-    // }
+    flex: 1;
   }
 
   &__footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
+    height: 70px;
     width: 100%;
     background: rgb(71, 113, 60);
     background: linear-gradient(0deg, rgba(71, 113, 60, 1) 15%, #263a25 70%);
+
+    img {
+      max-width: 222px;
+    }
   }
 
   p {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1.125rem;
     max-width: 260px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-weight: 400;
   }
 
@@ -82,7 +79,7 @@ main {
     padding-top: 50px;
 
     h1 {
-      font-size: 3.75rem;
+      font-size: 3rem;
       font-weight: 400;
       margin: 0;
       line-height: 0.97;
@@ -92,7 +89,7 @@ main {
     }
   }
   &__cta {
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     display: flex;
     flex-direction: column;
 
@@ -161,6 +158,10 @@ main {
         max-width: 1080px;
         padding: 0 40px;
         height: 100%;
+
+        img {
+          max-width: 185px;
+        }
       }
     }
 
@@ -181,6 +182,7 @@ main {
       h2 {
         text-transform: uppercase;
         font-size: 1.25rem;
+        font-family: 'Circular Std Black', Helvetica, sans-serif, Arial;
       }
     }
     &__qr {
@@ -197,6 +199,7 @@ main {
     }
     a {
       color: #fff;
+      font-weight: 700;
     }
   }
 }
