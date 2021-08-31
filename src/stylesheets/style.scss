@@ -40,10 +40,10 @@ main {
   }
 
   .container {
-    padding: 0 35px;
+    padding: 0 20px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)),
       url('../images/modal_bg.jpg');
-    background-position: 55% 55%;
+    background-position: 50% 55%;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: calc(100vh - 120px);
@@ -71,17 +71,18 @@ main {
   }
 
   p {
-    font-size: 1.25rem;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
     max-width: 260px;
-    margin-bottom: 44px;
+    margin-bottom: 30px;
     font-weight: 400;
   }
 
   &__title {
-    padding-top: 100px;
+    padding-top: 50px;
 
     h1 {
-      font-size: 68px;
+      font-size: 3.75rem;
       font-weight: 400;
       margin: 0;
       line-height: 0.97;
@@ -91,28 +92,111 @@ main {
     }
   }
   &__cta {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
+
+    a {
+      width: 215px;
+    }
     button {
-      background: none;
-      border: 2px solid #fff;
       border-radius: $button-radius;
       height: 50px;
       min-width: 217px;
-      color: #fefefe;
+      color: #fff;
       text-shadow: none;
       cursor: pointer;
       font-size: 18px;
       width: 215px;
       height: 50px;
       margin: 10px 0;
+      border: 2px solid #fff;
+      border-color: $theme-color;
+      background-color: $theme-color;
 
-      &:first-of-type {
-        border-color: $theme-color;
-        background-color: $theme-color;
-        margin-top: 0;
+      &.btn__external {
+        background: none;
+        border: 2px solid #fff;
       }
+    }
+  }
+}
+
+.modal-desktop {
+  display: none;
+  opacity: 0;
+  user-select: none;
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+
+  @media only screen and (min-width: 992px) {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    user-select: initial;
+    opacity: 1;
+    height: 100vh;
+    min-height: 800px;
+    width: 100vw;
+    z-index: 9999;
+    background-color: #000;
+    background-image: url('../images/Desktop-Dog-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &__header {
+      height: 70px;
+      width: 100%;
+      background: rgb(71, 113, 60);
+      background: linear-gradient(0deg, rgba(71, 113, 60, 1) 15%, #263a25 95%);
+
+      &-container {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1080px;
+        padding: 0 40px;
+        height: 100%;
+      }
+    }
+
+    &__container {
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      max-width: 1080px;
+      width: 100%;
+      padding: 0 40px;
+      font-family: Helvetica, Arial, sans-serif;
+
+      > * {
+        max-width: 352px;
+      }
+
+      h2 {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+      }
+    }
+    &__qr {
+      display: flex;
+      flex-direction: row;
+
+      img {
+        width: 30%;
+        height: auto;
+      }
+      p {
+        padding-left: 10px;
+      }
+    }
+    a {
+      color: #fff;
     }
   }
 }

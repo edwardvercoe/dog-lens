@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   console.log(platform.name);
+  console.log(platform.product);
 
-  if (platform.name == 'Safari') {
+  if (platform.name == 'Safari' || platform.product == 'iPhone') {
     document.querySelector('.preview-options').classList.add('disable');
     document.querySelector('.safari-options').classList.add('active');
   }
@@ -266,7 +267,6 @@ function takeSnapshot() {
   // some API's (like Azure Custom Vision) need a blob with image data
   getCanvasBlob(canvas).then(function (blob) {
     // do something with the image blob
-    console.log(blob);
 
     let blobURL = URL.createObjectURL(blob);
     const downloadBtn = document.querySelector('#downloadImage');
